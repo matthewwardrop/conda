@@ -339,7 +339,7 @@ class SubdirData(object):
         json_obj = json.loads(raw_repodata_str or '{}')
 
         subdir = json_obj.get('info', {}).get('subdir') or self.channel.subdir
-        assert subdir == self.channel.subdir
+        assert self.channel.subdir.endswith(subdir)
         add_pip = context.add_pip_as_python_dependency
         schannel = self.channel.canonical_name
 
